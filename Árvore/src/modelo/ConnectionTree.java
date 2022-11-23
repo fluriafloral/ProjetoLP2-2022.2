@@ -11,5 +11,8 @@ package modelo;
  */
 
 public class ConnectionTree extends Matrix {
-
+	// attributes
+	private Vertex[] nodes;
+	// methods
+	
 }
