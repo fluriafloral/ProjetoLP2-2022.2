@@ -3,24 +3,31 @@ package controle;
 import java.io.File;
 import java.util.Scanner;
 
-import modelo.Matrix;
+import modelo.*;
 
 public class FileMGMT {
 	// methods
-	public Matrix initialize(String filepath) {
-		Matrix m = new Matrix();
+	public UndirectedGraph initialize(String filepath) {
+		UndirectedGraph ug = new UndirectedGraph();
 		try {
 			File entry = new File(filepath);
 			Scanner scan = new Scanner(entry);
 			
-			m.setMatrixSize(scan.nextInt());
-			m.setMaxConnections(scan.nextInt());
+			ug.setMatrixSize(scan.nextInt());
+			ug.setMaxConnections(scan.nextInt());
 			
-			int[][] values = new int[m.getMatrixSize()][m.getMatrixSize()];
-			for (int i = 0; i < m.getMatrixSize(); i++) {
-				for (int j = i; j < m.getMatrixSize(); j++) {
+			for (int i = 0; i < ug.getMatrixSize(); i++) {
+				Vertex vect = new Vertex();
+				vect.setId(i);
+				ug.addtoVertices(vect);
+			}
+			
+			int[][] values = new int[ug.getMatrixSize()][ug.getMatrixSize()];
+			for (int i = 0; i < ug.getMatrixSize(); i++) {
+				for (int j = i; j < ug.getMatrixSize(); j++) {
 					if (i != j) {
 						int v = scan.nextInt();
+						
 						values[i][j] = v;
 						values[j][i] = v;
 					}
@@ -30,7 +37,23 @@ public class FileMGMT {
 				}
 			}
 			
-			m.setMatrix(values);
+			for (int i = 0; i < ug.getMatrixSize(); i++) {
+				for (int j = 0; j < ug.getMatrixSize(); j++) {
+					if (i != j) {
+						Edge edge = new Edge();
+						
+						Vertex a = ug.getVertex(i);
+						Vertex b = ug.getVertex(j);
+						
+						edge.setEdges(a, b);
+						edge.setCost(values[i][j]);
+						
+						ug.addtoEdges(edge);
+					}
+				}
+ 			}
+			
+			ug.setCosts(values);
 			
 			scan.close();
 		}
@@ -38,6 +61,6 @@ public class FileMGMT {
 			e.printStackTrace();
 		}
 		
-		return m;
+		return ug;
 	}
 }

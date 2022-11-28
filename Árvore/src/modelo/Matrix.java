@@ -10,29 +10,9 @@ package modelo;
  *
  */
 
-public class Matrix {
-	// attributes
-	private int matrixSize; // tamanho da matriz quadrada
-	private int maxConnections; // número máximo de conexões por casa
-	private int[][] matrix; // matriz processada no arquivo 
-	// methods
-	public int getMatrixSize() {
-		return matrixSize;
-	}
-	public void setMatrixSize(int matrixSize) {
-		this.matrixSize = matrixSize;
-	}
-	public int getMaxConnections() {
-		return maxConnections;
-	}
-	public void setMaxConnections(int maxConnections) {
-		this.maxConnections = maxConnections;
-	}
-	public int[][] getMatrix() {
-		return matrix;
-	}
-	public void setMatrix(int[][] matrix) {
-		this.matrix = matrix;
-	}
-	 
+interface Matrix {
+	int getMatrixSize();
+	void setMatrixSize(int matrixSize);
+	int[][] getCosts();
+	void setCosts(int[][] costs);
 }

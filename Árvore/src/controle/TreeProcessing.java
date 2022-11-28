@@ -1,18 +1,21 @@
 package controle;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 import modelo.*;
 
 public class TreeProcessing {
-	// attributes
-	private ConnectionTree[] forest;
-	private Vertex[] edges;
 	// methods
-	public TreeProcessing(int matrixSize) {
-		this.forest = new ConnectionTree[matrixSize];
-		this.edges = new Vertex[matrixSize];
-	}
-	
-	public void kruskal() {
+	public SpanningTree calculateMST(UndirectedGraph ug) {
+		SpanningTree mst = new SpanningTree();
 		
+		mst.setMaxSize(ug.getMatrixSize() - 1);
+		Stack<Vertex> v = ug.getVertices();
+		ArrayList<Edge> ic = ug.increasingCost();
+		
+		for ()
+		
+		return mst;
 	}
 }

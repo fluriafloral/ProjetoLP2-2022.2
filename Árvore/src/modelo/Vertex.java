@@ -4,32 +4,19 @@
 package modelo;
 
 /**
- * Esta classe representa o vértice (ou nodo) da árvore.
- * 
- * @author Pedro Henrique Teixeira e Silva
- * @author Gabriel Fernandes Laurindo
- * @version 1.0
- * @since 23/11/2022
+ * @author fluriafloral
  *
  */
-
 public class Vertex {
 	// attributes
-	private int[] connections;
+	private int id;
 	// methods
-	public Vertex(int[] costs) {
-		this.connections = costs;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
-	public int getMinimalCost() {
-		int min = this.connections[0];
-		
-		for (int i : this.connections) {
-			if (i < min) {
-				min = i;
-			}
-		}
-		
-		return min;
-	}
 }
