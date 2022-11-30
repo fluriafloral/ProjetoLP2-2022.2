@@ -10,10 +10,9 @@ package modelo;
  *
  */
 
-public class Matrix {
-	
-	private int matrixSize; // tamanho da matriz quadrada
-	private int maxConnections; // número máximo de conexões por casa
-	private int[][] matrix; // matriz processada no arquivo 
-	 
+interface Matrix {
+	int getMatrixSize();
+	void setMatrixSize(int matrixSize);
+	int[][] getCosts();
+	void setCosts(int[][] costs);
 }
