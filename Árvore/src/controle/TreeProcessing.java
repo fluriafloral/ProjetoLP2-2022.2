@@ -12,6 +12,8 @@ public class TreeProcessing {
 	public boolean validSpanningTree(UndirectedGraph ug, Edge[] edgesSubset) {
 		boolean valid = false;
 		Stack<Vertex> v = new Stack<Vertex>();
+		Stack<Vertex> checkCircuit = new Stack<Vertex>();
+		
 		for (Vertex vert : ug.getVertices()) {
 			v.add(vert);
 		}
@@ -29,8 +31,14 @@ public class TreeProcessing {
 			
 			v.remove(ug.getVertex(vert[0].getId()));
 			connectionsLeft[vert[0].getId()] -= 1;
+			
 			v.remove(ug.getVertex(vert[1].getId()));
 			connectionsLeft[vert[1].getId()] -= 1;
+			checkCircuit.add(vert[1]);
+			
+			if (checkCircuit.contains(vert[0]) && checkCircuit.contains(vert[1])) {
+				return false;
+			}
 		}
 		
 		for (int i : connectionsLeft) {
