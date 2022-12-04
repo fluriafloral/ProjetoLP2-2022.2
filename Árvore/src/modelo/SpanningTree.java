@@ -24,5 +24,9 @@ public class SpanningTree extends Tree {
 		this.subgraph.add(edge);
 		this.totalCost += edge.getCost();
 	}
-
+	
+	@Override
+	public int getTotalCost() {
+		return this.totalCost;
+	}
 }

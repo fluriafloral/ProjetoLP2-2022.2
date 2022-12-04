@@ -29,7 +29,7 @@ public class Edge {
 	
 	public void setEdges(Vertex a, Vertex b) {
 		this.a = a;
-		this.b = a;
+		this.b = b;
 	}
 	
 	public Vertex[] getNodes() {

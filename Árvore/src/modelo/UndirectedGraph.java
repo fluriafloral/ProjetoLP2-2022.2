@@ -30,6 +30,10 @@ public class UndirectedGraph implements Matrix {
 		return vertices;
 	}
 
+	public ArrayList<Edge> getEdges() {
+		return edges;
+	}
+
 	public void addtoEdges(Edge edge) {
 		edges.add(edge);
 	}
