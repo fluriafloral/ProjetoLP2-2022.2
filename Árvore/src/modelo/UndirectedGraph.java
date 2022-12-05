@@ -7,16 +7,20 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 /**
- * @author fluriafloral
+ * Esta classe representa o grafo processado a partir do aquivo de entrada, implementando a interface Matrix.
+ * 
+ * @author Pedro Henrique Teixeira e Silva
+ * @author Gabriel Fernandes Laurindo
+ * @version 1.0
+ * @since 21/10/2022
  *
  */
 public class UndirectedGraph implements Matrix {
 	// attributes
 	private Stack<Vertex> vertices = new Stack<Vertex>();
-	private ArrayList<Edge> edges = new ArrayList<Edge>();
-	private int maxConnections; // Maximum number of connections per node (house, in this case)
-	private int matrixSize; // Size of matrix
-	private int[][] costs; // The costs for all connections
+	private ArrayList<Edge> edges = new ArrayList<Edge>(); 
+	private int maxConnections; // Numero máximo de conexões que podem estar associados a um vértice (casa)
+	private int matrixSize; // Quantidade de vértices
 	//methods
 	public void addtoVertices(Vertex vertex) {
 		vertices.push(vertex);
@@ -52,35 +56,5 @@ public class UndirectedGraph implements Matrix {
 	
 	public void setMatrixSize(int matrixSize) {
 		this.matrixSize = matrixSize;
-	}
-	
-	public int[][] getCosts() {
-		return costs;
-	}
-	
-	public void setCosts(int[][] costs) {
-		this.costs = costs;
-	}
-	
-	public ArrayList<Edge> increasingCost() {
-		ArrayList<Edge> sorted = new ArrayList<Edge>();
-		ArrayList<Edge> ref = edges;
-		Edge aux = new Edge();
-		
-		while (sorted.size() < edges.size()) {
-			int min = ref.get(0).getCost();
-			
-			for (Edge e : ref) {
-				if (e.getCost() < min) {
-					aux = e;
-					min = aux.getCost();
-				}
-			}
-			
-			sorted.add(aux);
-			ref.remove(aux);
-		}
-		
-		return sorted;
 	}
 }

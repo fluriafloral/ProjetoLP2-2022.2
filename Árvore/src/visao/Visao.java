@@ -9,7 +9,8 @@ public class Visao {
 		UndirectedGraph ug = f.initialize("../Árvore/entradas/simples.txt");
 		
 		TreeProcessing tp = new TreeProcessing();
-		tp.printcomb(ug);
+		GenerateResult gr = new GenerateResult();
+		gr.printResult(tp.baseline(ug));
 	}
 
 }
